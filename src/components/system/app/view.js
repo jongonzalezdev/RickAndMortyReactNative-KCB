@@ -1,20 +1,20 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+import {YellowBox, StatusBar} from 'react-native';
 import Routes from '../routes';
+import {Provider} from 'react-redux';
+import store from '../../../config/redux';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    YellowBox.ignoreWarnings(['Warning: componentWillReceiveProps']);
+    StatusBar.setBarStyle('light-content', false);
+  }
   render() {
     return (
-      <SafeAreaView>
-        <Text>HOLA</Text>
-      </SafeAreaView>
+      <Provider store={store}>
+        <Routes />
+      </Provider>
     );
   }
 }
